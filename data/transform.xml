@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<xsl:template match="/">
+<html>
+	<body>
+
+		<xsl:for-each select="entry">
+			<h2>
+				<xsl:for-each select="k_ele">
+					<xsl:value-of select="keb"/>;
+				</xsl:for-each>
+			</h2>
+			<p>
+				<xsl:for-each select="r_ele">
+					<xsl:value-of select="reb"/>; 
+				</xsl:for-each>
+			</p>
+			<p>
+				<xsl:for-each select="sense">					
+					<xsl:value-of select="gloss"/><br/>					
+				</xsl:for-each>
+			</p>
+		</xsl:for-each>
+	</body>
+</html>
+</xsl:template>
+</xsl:stylesheet>
+
+

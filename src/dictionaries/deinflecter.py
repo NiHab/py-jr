@@ -60,7 +60,7 @@ class Deinflecter:
     def deinflectWord(self, word):
         """
         Returns all possible deinflections for all possible endings of an expression
-        Returns list of format [(inflection, name, dictionary form), ...]
+        If no inflections found it returns the expression in result.deinflected
         """
         res = []
         for n in range(0, len(word)):
@@ -69,6 +69,9 @@ class Deinflecter:
                     dictform = self.rreplace(word, word[n:], inf[2], 1)
                     
                     res += [Deinflecter.Inflection(ending=word[n:], type=inf[1], deinflected=dictform)]
+        
+        if res == []:
+            res += [Deinflecter.Inflection(ending="", type="", deinflected=word)]
         
         return res
         

@@ -29,25 +29,26 @@ class MainWindow(QMainWindow):
     def inputTextChanged(self):
         text = MainWindow.ui.textInput.toPlainText()
         
-        directHits = MainWindow.di[text]
+        res = MainWindow.de.deinflectWord(text)
+        #print(res)
+
+        directHits = [MainWindow.di[w.deinflected] for w in res]
+        #Flatten
+        directHits = [item for sublist in directHits for item in sublist]
+        for it in directHits:
+            ET.dump(it)
         frame = MainWindow.ui.frameInfo
         layout = QtWidgets.QVBoxLayout()
-        
-        print (frame.layout())
+        #print(directHits)
+        #print (frame.layout())
         for hit in directHits:
-            print(MainWindow.di.toHTML(hit))
+            #print(MainWindow.di.toHTML(hit))
             txt = QTextBrowser()
             txt.setHtml(str(MainWindow.di.toHTML(hit)))
             layout.addWidget(txt)
+        
+        
             
         QWidget().setLayout(frame.layout())
         frame.setLayout(layout)
-        #print((self.di.toHTML(self.di['髪'][0])))
-#===============================================================================
-# 
-#         a = ET.Element('a')
-#         self.ui.textOutput.setHtml(str(self.di.toHTML(''.join(self.di[text]))))
-#         
-#         for t in self.di[text]:
-#             print (self.di.toHTML(t))
-#===============================================================================
+

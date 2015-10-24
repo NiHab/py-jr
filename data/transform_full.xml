@@ -172,78 +172,113 @@
 <!ENTITY zool "zoology term">
 <!ENTITY joc "jocular, humorous term">
 <!ENTITY anat "anatomical term">
-
-<!ENTITY nbsp "&#160;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="html" indent="yes"/>
-<xsl:template match="/">
 
-<html lang="en-us">
+<xsl:template match="/">
+<html>
 	<body>
 
 		<xsl:for-each select="result/entry">
-
 		<xsl:sort select="freq"
 		data-type="number"
 		order="descending"/> 
 
-
+			[<xsl:value-of select="ent_seq"/>]
+			<xsl:for-each select="app_infl">					
+				[<xsl:value-of select="text()"/>]
+			</xsl:for-each>
+			<xsl:for-each select="freq">					
+				[<xsl:value-of select="text()"/>]
+			</xsl:for-each>
 			<p>
+				<xsl:for-each select="k_ele">
+					<xsl:value-of select="keb"/>;
+					
+					<xsl:for-each select="ke_pri">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
 				
-				<span style="font-size: 2em;">
-					<xsl:for-each select="k_ele">
-						<xsl:value-of select="keb"/>; 
+				
+					<xsl:for-each select="ke_inf">					
+						[<xsl:value-of select="text()"/>]
 					</xsl:for-each>
-				</span>
-				<span style="font-size: 1.5em;">
-					<xsl:for-each select="r_ele[not(boolean(re_restr))]">
-						<xsl:value-of select="reb"/>; 
-
-						<xsl:for-each select="re_restr">					
-							[<xsl:value-of select="text()"/>]
-						</xsl:for-each>						
-					</xsl:for-each>
-				</span>	
-							
-				<em>
-					<xsl:for-each select="app_infl">					
-						(<xsl:value-of select="text()"/>)
-					</xsl:for-each>
-				</em>
+					<br/>					
+				</xsl:for-each>
 			</p>
-			<p style="font-size: 1em;">
-				<ul>
-					<xsl:for-each select="sense">
-						<li style="margin-bottom: 0.5em;">
-							<xsl:for-each select="xref">					
-								[<xsl:value-of select="text()"/>] 
-							</xsl:for-each>
-
-							<!--<xsl:for-each select="field">					
-								<i>[<xsl:value-of select="text()"/>] </i>&nbsp;&nbsp;
-							</xsl:for-each>
-
-							<xsl:for-each select="misc">					
-								<i>[<xsl:value-of select="text()"/>] </i>&nbsp;&nbsp;
-							</xsl:for-each>
-
-							<xsl:for-each select="dial">					
-								<i>[<xsl:value-of select="text()"/>] </i>&nbsp;&nbsp;
-							</xsl:for-each>
-
-							<xsl:for-each select="s_inf">					
-								<i>[<xsl:value-of select="text()"/>] </i>&nbsp;&nbsp;
-							</xsl:for-each>-->
-
-							<xsl:for-each select="gloss">		
-								<strong><xsl:value-of select="text()"/>;</strong> &nbsp;
-							</xsl:for-each>
-						</li>
-
+			<p>
+				<xsl:for-each select="r_ele">
+					<xsl:value-of select="reb"/>; 
+					
+					<xsl:for-each select="re_nokanji">					
+						[<xsl:value-of select="text()"/>]
 					</xsl:for-each>
-				</ul>
-				<p><em><a href="#" style="font-size: 0.75em;">info</a></em></p>
+
+					<xsl:for-each select="re_restr">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>				
+				
+					<xsl:for-each select="re_inf">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="re_pri">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+					<br/>
+				</xsl:for-each>
+			</p>
+			<p>
+				<xsl:for-each select="sense">
+					<xsl:for-each select="stagk">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="stagr">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="xref">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="ant">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="pos">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="field">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="misc">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="lsource">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="dial">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="gloss">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="pri">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+
+					<xsl:for-each select="s_inf">					
+						[<xsl:value-of select="text()"/>]
+					</xsl:for-each>
+					<br/>
+				</xsl:for-each>
 			</p>
 		</xsl:for-each>
 	</body>

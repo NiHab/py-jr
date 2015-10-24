@@ -20,7 +20,11 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QTextEdit" name="textInput"/>
+      <widget class="QTextEdit" name="textInput">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Cantarell&quot;;</string>
+       </property>
+      </widget>
       <widget class="QTextBrowser" name="textBrowser"/>
      </widget>
     </item>

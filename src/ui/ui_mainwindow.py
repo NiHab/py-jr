@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets, QtWebKitWidgets
 
 class Ui_MainWindow(object):
 	def setupUi(self, MainWindow):
@@ -20,8 +20,9 @@ class Ui_MainWindow(object):
 		self.splitter.setOrientation(QtCore.Qt.Horizontal)
 		self.splitter.setObjectName("splitter")
 		self.textInput = QtWidgets.QTextEdit(self.splitter)
+		self.textInput.setStyleSheet("font: 17pt;")
 		self.textInput.setObjectName("textInput")
-		self.textBrowser = QtWidgets.QTextBrowser(self.splitter)
+		self.textBrowser = QtWebKitWidgets.QWebView(self.splitter)
 		self.textBrowser.setObjectName("textBrowser")
 		self.verticalLayout.addWidget(self.splitter)
 		MainWindow.setCentralWidget(self.centralwidget)

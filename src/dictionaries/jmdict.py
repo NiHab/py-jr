@@ -1,8 +1,7 @@
-#@PydevCodeAnalysisIgnore
-from lxml import etree as ET
-from collections import defaultdict
-from operator import __getitem__
-import gc
+
+from lxml import etree
+
+import collections
 
 
 #===============================================================================
@@ -16,7 +15,7 @@ import gc
 class JMDict:
 
     __xmlroot = None
-    __hashtbl = defaultdict(list)
+    __hashtbl = collections.defaultdict(list)
     __transform = None
         
     def __getitem__(self, key):
@@ -25,7 +24,9 @@ class JMDict:
     
     def load(self, xmlfp, xslfp):
         print('loading xml dict')
-        JMDict.__xmlroot = ET.parse(xmlfp).getroot()
+        JMDict.__xmlroot = etree.parse(xmlfp).getroot()
+
+
         
 
         #Way faster lookuptimes by using a hashtable to point to xml nodes
@@ -41,7 +42,7 @@ class JMDict:
                     JMDict.__hashtbl[key] += [entry]
                     
         print('loading xsl')
-        JMDict.__transform = ET.XSLT(ET.parse(xslfp))
+        JMDict.__transform = etree.XSLT(etree.parse(xslfp))
         
         
 

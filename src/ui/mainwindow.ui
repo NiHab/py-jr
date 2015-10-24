@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1249</width>
+    <height>863</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,15 +21,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <widget class="QTextEdit" name="textInput"/>
-      <widget class="QFrame" name="frameInfo">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2"/>
-      </widget>
+      <widget class="QTextBrowser" name="textBrowser"/>
      </widget>
     </item>
    </layout>
@@ -39,7 +31,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1249</width>
      <height>27</height>
     </rect>
    </property>

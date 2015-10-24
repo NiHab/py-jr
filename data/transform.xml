@@ -179,8 +179,9 @@
 <html>
 	<body>
 
-		<xsl:for-each select="entry">
+		<xsl:for-each select="result/entry">
 			[<xsl:value-of select="ent_seq"/>]
+			[<xsl:value-of select="app_infl"/>]
 			<p>
 				<xsl:for-each select="k_ele">
 					<xsl:value-of select="keb"/>;

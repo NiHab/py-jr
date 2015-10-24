@@ -4,7 +4,8 @@ Created on Oct 23, 2015
 @author: anon
 '''
 
-from collections import defaultdict
+import collections
+
 class Freq:
     """
     Acts as R/O dictionary containing the frequency of expressions
@@ -13,7 +14,7 @@ class Freq:
     Key is the expression
     """
 
-    __freqs = defaultdict(int)
+    __freqs = collections.defaultdict(int)
     __raw = []
 
         

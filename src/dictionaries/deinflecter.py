@@ -4,7 +4,7 @@ Created on Oct 23, 2015
 @author: anon
 '''
 
-from collections import namedtuple        
+import collections
 
 class Deinflecter:
     """
@@ -17,7 +17,7 @@ class Deinflecter:
     #[index] = name
     __inflection_index = {}
     
-    Inflection = namedtuple("Inflection", "ending type deinflected")
+    Inflection = collections.namedtuple("Inflection", "ending type deinflected")
 
     def rreplace(self, s, old, new, occurrence):
         li = s.rsplit(old, occurrence)
@@ -54,15 +54,17 @@ class Deinflecter:
                 
             
         f.close()
-        Deinflecter.__inflection_index = None
+
         
 
-    def deinflectWord(self, word):
+    def deinflectWord(self, word, returnWord = False):
         """
         Returns all possible deinflections for all possible endings of an expression
-        First element is the unmodified word in .deinflected
+        if returnWord set, First element is the unmodified word in .deinflected
         """
-        res = [Deinflecter.Inflection(ending="", type="", deinflected=word)]
+        res = []
+        if returnWord:
+            res += [Deinflecter.Inflection(ending=None, type=None, deinflected=word)]
         for n in range(0, len(word)):
             for inf in Deinflecter.inflection:
                 if inf[0] == word[n:]:
@@ -70,6 +72,5 @@ class Deinflecter:
                     
                     res += [Deinflecter.Inflection(ending=word[n:], type=inf[1], deinflected=dictform)]
 
-        
         return res
         

@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
         text = MainWindow.ui.textInput.toPlainText()
         
         res = MainWindow.de.deinflectWord(text)
-        #print(res)
+        print(res)
 
         directHits = [MainWindow.di[w.deinflected] for w in res]
         #Flatten
@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
             ET.dump(it)
         frame = MainWindow.ui.frameInfo
         layout = QtWidgets.QVBoxLayout()
-        #print(directHits)
+        print(directHits)
         #print (frame.layout())
         for hit in directHits:
             #print(MainWindow.di.toHTML(hit))

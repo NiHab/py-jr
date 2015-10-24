@@ -60,18 +60,16 @@ class Deinflecter:
     def deinflectWord(self, word):
         """
         Returns all possible deinflections for all possible endings of an expression
-        If no inflections found it returns the expression in result.deinflected
+        First element is the unmodified word in .deinflected
         """
-        res = []
+        res = [Deinflecter.Inflection(ending="", type="", deinflected=word)]
         for n in range(0, len(word)):
             for inf in Deinflecter.inflection:
                 if inf[0] == word[n:]:
                     dictform = self.rreplace(word, word[n:], inf[2], 1)
                     
                     res += [Deinflecter.Inflection(ending=word[n:], type=inf[1], deinflected=dictform)]
-        
-        if res == []:
-            res += [Deinflecter.Inflection(ending="", type="", deinflected=word)]
+
         
         return res
         
